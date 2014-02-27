@@ -22,6 +22,12 @@ class mysql {
     require => Service["mysql"],
   }
 
+  # create database structure
+  exec { "write-mysql-data":
+    command => "mysql -uroot -p$mysqlpw < /vagrant/static.sql",
+    require => Exec["set-mysql-password"],
+  }
+
   # write some data to the db
   exec { "write-mysql-data":
     #unless => "mysqladmin -uroot -p$mysqlpw status",
