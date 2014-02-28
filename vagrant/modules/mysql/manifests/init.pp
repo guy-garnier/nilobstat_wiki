@@ -30,7 +30,7 @@ class mysql {
 
   # write some data to the db
   exec { "write-mysql-data":
-    command => "mysql -uroot -p$mysqlpw < /vagrant/dump.sql",
+    command => "mysql -uroot -p$mysqlpw nilobstat_wiki < /vagrant/dump.sql",
     require => Exec["create-database-structure"],
   }
 }
