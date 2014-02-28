@@ -18,8 +18,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename = "nilobstat_wiki";
-$wgMetaNamespace = "Projet";
+$wgSitename = "nilobstat-wiki";
+$wgMetaNamespace = "Nilobstat-wiki";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -55,8 +55,8 @@ $wgEmailAuthentication = true;
 $wgDBtype = "mysql";
 $wgDBserver = "localhost";
 $wgDBname = "application";
-$wgDBuser = "app_user";
-$wgDBpassword = "app_user";
+$wgDBuser = "root";
+$wgDBpassword = "d3v0p5";
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -99,11 +99,11 @@ $wgShellLocale = "en_US.utf8";
 # Site language code, should be one of the list in ./languages/Names.php
 $wgLanguageCode = "fr";
 
-$wgSecretKey = "3d0ad68453ab9a3fe8763d4cbd570c1d98f00e273eb1ca880647f43dee84058b";
+$wgSecretKey = "2184507c8e524d64c2afaf88c54ca05e9656cf3f40419171e776311800aca711";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "fc44bd03abf49846";
+$wgUpgradeKey = "d75f35fd76698ef8";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'cologneblue', 'monobook', 'vector':
@@ -127,4 +127,4 @@ $wgGroupPermissions['*']['edit'] = false;
 
 # End of automatically generated settings.
 # Add more configuration options below.
-#$wgShowSQLErrors = 1;
+
