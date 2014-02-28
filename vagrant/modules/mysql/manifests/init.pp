@@ -30,7 +30,6 @@ class mysql {
 
   # write some data to the db
   exec { "write-mysql-data":
-    #unless => "mysqladmin -uroot -p$mysqlpw status",
     command => "mysql -uroot -p$mysqlpw < /vagrant/dump.sql",
     require => Exec["set-mysql-password"],
   }
