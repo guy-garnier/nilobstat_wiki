@@ -217,14 +217,18 @@ class VectorTemplate extends BaseTemplate {
 		</div>
 		<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
 			<?php foreach ( $this->getFooterLinks() as $category => $links ) { ?>
+				
 				<ul id="footer-<?php echo $category ?>">
 					<?php foreach ( $links as $link ) { ?>
 						<li id="footer-<?php echo $category ?>-<?php echo $link ?>"><?php $this->html( $link ) ?></li>
 					<?php } ?>
 				</ul>
+				
 			<?php } ?>
+			<ul id="footer"><li id="footer"><a href="http://www.nilobstat.com/" target="_blank">Nilobstat Agence web</a></li></ul>
 			<?php $footericons = $this->getFooterIcons( "icononly" );
 			if ( count( $footericons ) > 0 ) { ?>
+			
 				<ul id="footer-icons" class="noprint">
 <?php			foreach ( $footericons as $blockName => $footerIcons ) { ?>
 					<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
