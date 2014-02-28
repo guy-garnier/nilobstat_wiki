@@ -54,9 +54,9 @@ $wgEmailAuthentication = true;
 ## Database settings
 $wgDBtype = "mysql";
 $wgDBserver = "localhost";
-$wgDBname = "nilobstat_wiki";
-$wgDBuser = "wikiuser";
-$wgDBpassword = "wikiuser";
+$wgDBname = "application";
+$wgDBuser = "app_user";
+$wgDBpassword = "app_user";
 
 # MySQL specific settings
 $wgDBprefix = "";
