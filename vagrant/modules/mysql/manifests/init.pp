@@ -23,7 +23,7 @@ class mysql {
   }
 
   # create database structure
-  exec { "write-mysql-data":
+  exec { "create-database-structure":
     command => "mysql -uroot -p$mysqlpw < /vagrant/static.sql",
     require => Exec["set-mysql-password"],
   }
@@ -31,6 +31,6 @@ class mysql {
   # write some data to the db
   exec { "write-mysql-data":
     command => "mysql -uroot -p$mysqlpw < /vagrant/dump.sql",
-    require => Exec["set-mysql-password"],
+    require => Exec["create-database-structure"],
   }
 }
