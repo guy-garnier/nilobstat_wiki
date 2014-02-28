@@ -1,5 +1,4 @@
-CREATE DATABASE nilobstat_wiki CHARACTER SET utf8;
-COLLATE utf8_general_ci
+CREATE DATABASE nilobstat_wiki CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Création du compte utilisateur pour l'accès web.
 CREATE USER 'wikiuser'@'localhost' IDENTIFIED BY 'wikiuser';
