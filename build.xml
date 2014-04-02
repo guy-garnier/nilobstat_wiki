@@ -1,0 +1,64 @@
+<project name="EasyGo" default="help" basedir=".">
+
+  <tstamp>
+    <format property="TODAY_FR" pattern="dd-MM-yyyy_hh-mm" locale="fr,FR"/>
+  </tstamp>
+
+  <target name="help" description="show available commands" >
+    <exec executable="ant" dir="." failonerror="true">
+      <arg value="-p"/>
+    </exec>
+  </target>
+
+  <target name="whoami" description="WhoAmI" >
+    <exec executable="whoami" dir="." failonerror="false">
+    </exec>
+  </target>
+  
+  <!-- Déploie le site sur le serveur de prod -->
+  <target name="deploy-master" description="Master branch has changed." depends="whoami,lint,backup-files-full,fetch-db-backup,sync-preprod">
+    <echo>All tasks done.</echo>
+  </target>
+  
+  <!-- Déploie le site sur le serveur de préprod -->
+  <target name="deploy-preprod" description="Preprod branch has changed." depends="lint,sync-preprod">
+    <echo>All tasks done.</echo>
+  </target>
+  
+  <!-- synchronise le site sur le serveur de préprod -->
+  <target name="sync-preprod" description="Deploy using rsync" >
+    <exec executable="rsync" dir="." failonerror="true">
+      <arg value="-vtur"/>
+      <arg value="--exclude-from=/var/www/share/rsync/symfony-excludelist.rc"/>
+      <arg value="."/>
+      <arg value="root@ns3280137.ovh.net:/home/easygo-preprod"/>
+    </exec>
+  </target>
+
+  <!-- Effectue une sauvegarde locale du site -->
+  <target name="backup-files-full" description="Files full backup" >
+    <exec executable="bash" dir="." failonerror="true">
+      <arg value="-c"/>
+      <arg value="cp -vfr . /var/backups/easygo/${TODAY_FR} 2> /dev/null | wc -l"/>
+    </exec>
+  </target>
+  
+  <!-- Télécharge le dump de la base de données du serveur de préprod -->
+  <target name="fetch-db-backup" description="Full backup site" >
+    <exec executable="scp" dir="." failonerror="false">
+      <arg line="root@ns3280137.ovh.net:/home/easygo/backup.sql /var/backups/easygo/${TODAY_FR}-database.sql"/>
+    </exec>
+  </target>
+  
+  <!-- Execute la verification syntaxique -->
+  <target name="lint" description="PHP syntax check">
+    <apply executable="php" failonerror="true">
+      <arg value="-l"/>
+      <fileset dir="./src">
+        <include name="**/*.php"/>
+        <modified/>
+      </fileset>
+    </apply>
+  </target>
+
+</project>

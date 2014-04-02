@@ -146,3 +146,6 @@ $wgDefaultUserOptions['GoogleAppsDomain'] = 'nilobstat.com';
  
 require_once("$IP/extensions/GoogleAppsAuthentication/GoogleAppsAuthentication.php");
 $wgShowExceptionDetails = true;
+
+# enable category tag cloud
+require_once( "$IP/extensions/WikiCategoryTagCloud/WikiCategoryTagCloud.php" );
