@@ -3,3 +3,4 @@
 .idea
 webroot
 .DS_Store
+mediawiki/extensions/GoogleAppsAuthentication/tmp/
